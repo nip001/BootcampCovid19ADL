@@ -132,7 +132,7 @@
                                         <p>You should known more about COVID-19, also we have answer for you.</p>
                                     </div>
                                     <div class="nk-block-head-content">
-                                        <a href="./" class="link"><span>Check Situation</span> <em class="icon ni ni-arrow-long-right"></em></a>
+                                        <a href="/faqs/input" class="btn btn-primary">Input Data QA</a>
                                     </div>
                                 </div>
                             </div><!-- .nk-block-head -->
@@ -144,55 +144,20 @@
                                                 <h4>Common Question & Answer</h4>
                                                 <p>WHO is continuously monitoring and responding to this outbreak. This Q&A will be updated as more is known about COVID-19, how it spreads and how it is affecting people worldwide. For more information, check back regularly on WHO’s <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank">coronavirus pages</a>.</p>
                                                 <h5 class="title text-dark mt-4 pt-sm-2 mb-3">Coronavirus Disease Basics</h5>
-                                                <div class="accordion accordion-s3">
+                                                <div class="accordion accordion-s3" th:each="qa : ${lstQA}">
                                                     <div class="accordion-item">
-                                                        <a href="#" class="accordion-head collapsed" data-toggle="collapse" data-target="#covid-basics-01">
-                                                            <h6 class="title">What is a novel coronavirus?</h6>
+                                                        <a href="#" class="accordion-head collapsed" data-toggle="collapse" th:data-target="'#covid-basics-'+${qa.id}">
+                                                            <h6 class="title" th:text="${qa.title}"/>
                                                             <span class="accordion-icon"></span>
                                                         </a>
-                                                        <div id="covid-basics-01" class="accordion-body collapse">
+                                                        <div th:id="'covid-basics-'+${qa.id}" class="accordion-body collapse">
+                                                            <img th:src="@{'/qa-images/'+${qa.image}}"  width="100" height="100" alt="">
                                                             <div class="accordion-inner">
-                                                                <p>On February 11, 2020 the World Health Organization announced an official name for the disease that is causing the 2019 novel coronavirus outbreak, first identified in Wuhan China. The new name of this disease is coronavirus disease 2019, abbreviated as COVID-19. In COVID-19, ‘CO’ stands for ‘corona,’ ‘VI’ for ‘virus,’ and ‘D’ for disease. Formerly, this disease was referred to as “2019 novel coronavirus” or “2019-nCoV”.</p>
-                                                                <p>A novel coronavirus is a new coronavirus that has not been previously identified. The virus causing coronavirus disease 2019 (COVID-19), is not the same as the <a href="https://www.cdc.gov/coronavirus/2019-ncov/index" target="_blank">coronaviruses that commonly circulate among humans</a> and cause mild illness, like the common cold.</p>
-                                                            </div>
+                                                                <p th:text="${qa.description}"/>
+                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="accordion-item">
-                                                        <a href="#" class="accordion-head collapsed" data-toggle="collapse" data-target="#covid-basics-02">
-                                                            <h6 class="title">Why is the disease being called coronavirus disease 2019, COVID-19?</h6>
-                                                            <span class="accordion-icon"></span>
-                                                        </a>
-                                                        <div id="covid-basics-02" class="accordion-body collapse">
-                                                            <div class="accordion-inner">
-                                                                <p>On February 11, 2020 the World Health Organization announced an official name for the disease that is causing the 2019 novel coronavirus outbreak, first identified in Wuhan China. The new name of this disease is coronavirus disease 2019, abbreviated as COVID-19. In COVID-19, ‘CO’ stands for ‘corona,’ ‘VI’ for ‘virus,’ and ‘D’ for disease. Formerly, this disease was referred to as “2019 novel coronavirus” or “2019-nCoV”.</p>
-                                                                <p>There are <a href="https://www.cdc.gov/coronavirus/2019-ncov/index" target="_blank">many types</a> of human coronaviruses including some that commonly cause mild upper-respiratory tract illnesses. COVID-19 is a new disease, caused be a novel (or new) coronavirus that has not previously been seen in humans. The name of this disease was selected following the World Health Organization (WHO) best practiceexternal icon for naming of new human infectious diseases.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="accordion-item">
-                                                        <a href="#" class="accordion-head collapsed" data-toggle="collapse" data-target="#covid-basics-03">
-                                                            <h6 class="title">How can people help stop stigma related to COVID-19?</h6>
-                                                            <span class="accordion-icon"></span>
-                                                        </a>
-                                                        <div id="covid-basics-03" class="accordion-body collapse">
-                                                            <div class="accordion-inner">
-                                                                <p>People can fight stigma and help, not hurt, others by providing social support. Counter stigma by learning and sharing facts. Communicating the facts that viruses do not target specific racial or ethnic groups and how COVID-19 actually spreads can help stop stigma.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="accordion-item">
-                                                        <a href="#" class="accordion-head collapsed" data-toggle="collapse" data-target="#covid-basics-04">
-                                                            <h6 class="title">Why might someone blame or avoid individuals and groups?</h6>
-                                                            <span class="accordion-icon"></span>
-                                                        </a>
-                                                        <div id="covid-basics-04" class="accordion-body collapse">
-                                                            <div class="accordion-inner">
-                                                                <p>People in the U.S. may be worried or anxious about friends and relatives who are living in or visiting areas where COVID-19 is spreading. Some people are worried about the disease. Fear and anxiety can lead to social stigma, for example, towards Chinese or other Asian Americans or people who were in quarantine.</p>
-                                                                <p>Stigma is discrimination against an identifiable group of people, a place, or a nation. Stigma is associated with a lack of knowledge about how COVID-19 spreads, a need to blame someone, fears about disease and death, and gossip that spreads rumors and myths.</p>
-                                                                <p>Stigma hurts everyone by creating more fear or anger towards ordinary people instead of the disease that is causing the problem.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
                                                 <h5 class="title text-dark mt-4 pt-sm-2 mb-3">How It Spreds</h5>
                                                 <div class="accordion accordion-s3">

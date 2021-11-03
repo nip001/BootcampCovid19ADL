@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.adl.main.model.AllCovidInfo;
+import com.adl.main.model.CommonQAModel;
 import com.adl.main.model.MockPostModel;
 import com.adl.main.model.PreventionModel;
+import com.adl.main.repository.CommonQARepository;
 import com.adl.main.repository.PreventionRepository;
 import com.adl.main.services.CovidApiService;
 import com.adl.main.services.MockPostService;
@@ -31,9 +33,10 @@ public class MainController {
 
 	@Autowired
 	MockPostService mockService;
-	
+
 	@Autowired
 	PreventionRepository preventionRepo;
+
 	
 	@GetMapping("/")
 	public String index(@RequestParam(name="country",defaultValue = "") String country,Model model){
@@ -62,12 +65,7 @@ public class MainController {
 		
 		return "countries";
 	}
-	
-	@GetMapping("/faqs")
-	public String faqs() {
-		
-		return "faqs";
-	}
+
 	
 	@GetMapping("/prevention")
 	public String prevention(Model model) {
@@ -98,7 +96,7 @@ public class MainController {
 		String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 		String type =file.getContentType();
 		if(type.equalsIgnoreCase("image/png") || type.equalsIgnoreCase("image/jpeg")) {
-			String uploadDir = "src/main/resources/static/prevention-image/";
+			String uploadDir = "prevention-image/";
 			
 			FileUtility.saveFile(file, uploadDir, fileName);
 			data.setImage(fileName);
